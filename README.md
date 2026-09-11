@@ -93,7 +93,7 @@ IPv4 Prefix:  10.0.0.0/24
 DHCP:         Enabled
 IPv6:         Disabled
 
-![]()
+![](Screenshot_2026-09-09_at_5.18.29_PM.png)
 
 The reason I went with a NAT Network rather than standard NAT is that it lets multiple VMs on the same network talk to each other, while still giving each one a way out to the internet. That's exactly what I need once I start adding attacker and target machines to the same environment.
 
@@ -108,6 +108,8 @@ Adapter Type: Intel PRO/1000 MT Desktop
 Allocated resources:
 text
 RAM: 8192 MB
+
+![](VirtualBox_kali_08_09_2026_11_14_02.png)
 
 I also set up a shared folder between the host and the Kali VM, mainly so I can move files back and forth without messing around with USB drives or network shares.
 
