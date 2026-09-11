@@ -14,7 +14,7 @@ Virtual Lab created with VirtualBox and Kali Linux for testing.
   <img src="https://img.shields.io/badge/Kali%20Linux-404040?style=flat-square&labelColor=C00000&logo=kalilinux&logoColor=white" />
   <img src="https://img.shields.io/badge/NetworkWalks-404040?style=flat-square&labelColor=C00000" />
   <img src="https://img.shields.io/badge/Ethical%20Hacking-E87500?style=flat-square&labelColor=000000&logo=kalilinux&logoColor=white" />
-  <img src="https://img.shields.io/badge/Divine%20Oses-Oyedoh%20CCIE-C00000?style=flat-square" />
+  <img src="https://img.shields.io/badge/Divine%20Oses%20Oyedoh%20-C00000?style=flat-square" />
 </p>
 
 ---
@@ -131,3 +131,43 @@ Once everything was working, I took a snapshot:
 text
 Clean Kali - Network Setup
 This gives me a known-good baseline. If a future exercise breaks something, I can just roll back instead of rebuilding from scratch.
+
+# Adding Windows 10 as a Target Machine
+
+To make the lab feel more like a real environment, I added a Windows 10 virtual machine alongside Kali. The point of this box isn't to attack anything external — it's to give myself a realistic, disposable target that behaves like an actual endpoint on a corporate-style network, so I can practice things like enumeration, service discovery, and exploitation against a system I fully control.
+
+I downloaded a Windows 10 evaluation image from Microsoft's own developer site (Microsoft provides these specifically for testing purposes) and imported it into VirtualBox in much the same way as the Kali VM.
+
+# Adding an Android 9 Virtual Device for Mobile Testing
+
+Mobile security is a different beast from desktop or server testing, so I wanted a way to experiment with that side of things too. Rather than running Android through VirtualBox directly — which isn't really built for mobile OS images — I used an Android-x86 build (Android 9 "Pie") that's specifically packaged to run as a regular VM.
+
+# Things That Went Wrong (and How I Fixed Them)
+Keeping a record of problems is honestly one of the more useful parts of a project like this — future me (or anyone following along) will hit the same snags.
+
+## Problem 1 — Internet Stopped Working After Setting a Static IP
+After I manually configured Kali's IPv4 settings, internet access dropped depending on how NetworkManager was handling things. My workaround was:
+
+'''bash
+sudo nmcli connection modify "Wired connection 1" ipv4.dad-timeout 0 '''
+
+I then restarted the connection (a reboot works too) and re-tested connectivity.
+
+## Problem 2 - Lack of knowledge on the download of Windows 10 and Android 9 on VirtualBoss
+My workaround was:
+I went on YouTube to find appropriate videos that fit perfectly.
+
+# Tools & Resources
+
+7-Zip: https://7-zip.org/download.html
+VirtualBox: https://virtualbox.org/wiki/Downloads
+Kali Linux: https://kali.org/get-kali
+Windows 10 (evaluation images): Microsoft's official developer/evaluation center
+Android-x86: the official Android-x86 project release page
+
+# Author 
+Divine Oses-Oyedoh Cybersecurity Professional B083
+LinkedIn www.linkedin.com/in/divine-oses-oyedoh-b543283a0
+
+# Project Information
+Program: Cybersecurity at Networkwalks | Week: 01 | Project: Cybersecurity & Pentesting Lab Setup | Repository: GitHub
